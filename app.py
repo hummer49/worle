@@ -2,17 +2,19 @@
 
 def safe_input_n_char(
         n:int, 
-        mensaje: str|None = "Introduzca su palabra: "
+        mensaje_input: str|None = "Introduzca su palabra:",
+        mensaje_error: str|None = "La longitud no coincide, vuelva a intentarlo"
     )->str:
+    # Retorna una cadena de caracteres de longitud n
     """
     Retorna una cadena de caracteres de longitud n
     
     :param n: Description
     :type n: int
-    :param mensaje: Description
-    :type mensaje: str | None
-    :param max: Description
-    :type max: int | None
+    :param mensaje_input: Description
+    :type mensaje_input: str | None
+    :param mensaje_error: Description
+    :type mensaje_error: str | None
     :return: Description
     :rtype: str
     """
@@ -21,9 +23,10 @@ def safe_input_n_char(
         raise TypeError(f"Se espera que n sea un numero entero, se recibio un <{type(n)}>")
     # Pedmos la palabra, hasta introducir n caracteres
     while True:
-        s = input(f"{mensaje}\t").strip()
+        s = input(f"{mensaje_input}\t").strip()
         if len(s) == n:
             break
+        print(mensaje_error)
     if s:
         return s
 
@@ -53,7 +56,7 @@ def verificar_palabra(
         if palabra_ingresada[ii] == palabra_objetivo[ii]:
             palabra_verificada.append(f"[{palabra_ingresada[ii]}]")
         elif palabra_ingresada[ii] in palabra_objetivo:
-            palabra_verificada.appen(f"({palabra_verificada[ii]})")
+            palabra_verificada.append(f"({palabra_ingresada[ii]})")
         else:
             palabra_verificada.append(f"{palabra_ingresada[ii]}")
     return palabra_verificada
@@ -74,7 +77,7 @@ def imprimir_grilla(
 
 def juego():
     # Setup
-    secreto = "perros" # a futuro elegir la palabra 'secreto' de un banco de palabras
+    secreto = "perro" # a futuro elegir la palabra 'secreto' de un banco de palabras
     longitud = 5 
     turnos = 5 # cantidad de turnos del jugador
     victoria = False # bandera que determina si el jugador gano o no
