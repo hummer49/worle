@@ -73,10 +73,8 @@ def juego():
         print("Perdiste")
 
 
-
-
 def main():
-    pass
+    juego()
 
 
 if __name__ == "__main__":
