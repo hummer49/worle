@@ -39,7 +39,10 @@ def imprimir_grilla(
     :param grilla: Description
     :type grilla: list
     """
-    pass
+    for fila in grilla:
+        for columna in fila:
+            print(columna, end=" ")
+        print("\n")
 
 
 
