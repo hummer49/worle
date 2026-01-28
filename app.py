@@ -3,7 +3,7 @@
 def verificar_palabra(
     palabra_objetivo:str, 
     palabra_ingresada:str
-) -> str:
+) -> list:
     """
     Docstring for verificar_palabra
     
@@ -14,7 +14,21 @@ def verificar_palabra(
     :return: Description
     :rtype: str
     """
-    pass
+    # Verficamos que ambas cadenas tengan la misma longitud
+    if len(palabra_objetivo) != len(palabra_ingresada):
+        print(f"La palabra ingresada <{palabra_ingresada}> no tiene la longitud adecuada")
+        return
+    # creamos la lista para almacenar las cadenas
+    palabra_verificada = []
+    # recorremos la palabra ingresada
+    for ii in range(len(palabra_ingresada)):
+        if palabra_ingresada[ii] == palabra_objetivo[ii]:
+            palabra_verificada.append(f"[{palabra_ingresada[ii]}]")
+        elif palabra_ingresada[ii] in palabra_objetivo:
+            palabra_verificada.appen(f"({palabra_verificada[ii]})")
+        else:
+            palabra_verificada.append(f"{palabra_ingresada[ii]}")
+    return palabra_verificada
 
 def imprimir_grilla(
     grilla: list
