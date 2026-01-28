@@ -1,5 +1,33 @@
 # app.py
 
+def safe_input_n_char(
+        n:int, 
+        mensaje: str|None = "Introduzca su palabra: "
+    )->str:
+    """
+    Retorna una cadena de caracteres de longitud n
+    
+    :param n: Description
+    :type n: int
+    :param mensaje: Description
+    :type mensaje: str | None
+    :param max: Description
+    :type max: int | None
+    :return: Description
+    :rtype: str
+    """
+    # Validamos que n sea un entero
+    if not isinstance(n, int):
+        raise TypeError(f"Se espera que n sea un numero entero, se recibio un <{type(n)}>")
+    # Pedmos la palabra, hasta introducir n caracteres
+    while True:
+        s = input(f"{mensaje}\t").strip()
+        if len(s) == n:
+            break
+    if s:
+        return s
+
+
 def verificar_palabra(
     palabra_objetivo:str, 
     palabra_ingresada:str
@@ -47,6 +75,7 @@ def imprimir_grilla(
 def juego():
     # Setup
     secreto = "perros" # a futuro elegir la palabra 'secreto' de un banco de palabras
+    longitud = 5 
     turnos = 5 # cantidad de turnos del jugador
     victoria = False # bandera que determina si el jugador gano o no
     lista_intentos = [] # lista para almacenar las listas de las palabras verificadas
@@ -55,7 +84,7 @@ def juego():
         # Mostrar la cantidad de turnos restantes
         print(f"Quedan:\t{turnos} turnos" if turnos > 1 else f"Queda:\t{turnos} turno" )
         # pedir la palabra al usuario
-        palabra_ingresada = input("Ingrese una palabra")
+        palabra_ingresada = safe_input_n_char(longitud, "Ingrese una palabra: ")
         # verificamos palabra_ingresada, y la agregamos a lista_intentos
         lista_intentos.append(verificar_palabra(secreto, palabra_ingresada))
         # Mostramo la lista de intentos
