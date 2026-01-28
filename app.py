@@ -44,15 +44,16 @@ def imprimir_grilla(
             print(columna, end=" ")
         print("\n")
 
-
-
-
-
-
-
-
 def juego():
-    verificar_palabra('a',"b")
+    # Setup
+    secreto = "perros" # a futuro elegir la palabra 'secreto' de un banco de palabras
+    turnos = 5 # cantidad de turnos del jugador
+    victoria = False # bandera que determina si el jugador gano o no
+    intentos = [] # lista para almacenar las listas de las palabras verificadas
+
+    while victoria == False and turnos > 0:
+        turnos -= 1
+
 
 
 
