@@ -1,4 +1,12 @@
 # app.py
+from random import choice
+
+BANCO_PALABRAS = [
+"perro", "gatos", "libro", "silla", "playa",
+"noche", "verde", "rojos", "campo", "fuego",
+"tarde", "dulce", "salud", "reloj", "fruta",
+"amigo", "trigo", "botas", "coche", "minas"
+]
 
 def safe_input_n_char(
         n:int, 
@@ -18,6 +26,8 @@ def safe_input_n_char(
     if s:
         return s
 
+def elegir_secreto(bank)->str:
+    return choice(bank)
 
 def verificar_palabra(
     palabra_objetivo:str, 
@@ -25,7 +35,7 @@ def verificar_palabra(
 ) -> list:
     # Verficamos que ambas cadenas tengan la misma longitud
     if len(palabra_objetivo) != len(palabra_ingresada):
-        raise Exception("Las lomgitudes de las palabras no coinciden")
+        raise Exception("Las longitudes de las palabras no coinciden")
     # creamos la lista para almacenar las cadenas
     palabra_verificada = []
     # recorremos la palabra ingresada
@@ -48,7 +58,7 @@ def imprimir_grilla(
 
 def juego():
     # Setup
-    secreto = "perro" # a futuro elegir la palabra 'secreto' de un banco de palabras
+    secreto = elegir_secreto(BANCO_PALABRAS)
     longitud = 5 
     turnos = 5 # cantidad de turnos del jugador
     victoria = False # bandera que determina si el jugador gano o no
@@ -73,7 +83,7 @@ def juego():
     if victoria == True:
         print("Ganaste!!")
     else:
-        print("Perdiste")
+        print(f"Perdiste. La palabra era {secreto}")
 
 
 def main():
