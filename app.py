@@ -6,18 +6,6 @@ def safe_input_n_char(
         mensaje_error: str|None = "La longitud no coincide, vuelva a intentarlo"
     )->str:
     # Retorna una cadena de caracteres de longitud n
-    """
-    Retorna una cadena de caracteres de longitud n
-    
-    :param n: Description
-    :type n: int
-    :param mensaje_input: Description
-    :type mensaje_input: str | None
-    :param mensaje_error: Description
-    :type mensaje_error: str | None
-    :return: Description
-    :rtype: str
-    """
     # Validamos que n sea un entero
     if not isinstance(n, int):
         raise TypeError(f"Se espera que n sea un numero entero, se recibio un <{type(n)}>")
@@ -34,21 +22,10 @@ def safe_input_n_char(
 def verificar_palabra(
     palabra_objetivo:str, 
     palabra_ingresada:str
-) -> list|None:
-    """
-    Docstring for verificar_palabra
-    
-    :param palabra_objetivo: Description
-    :type palabra_objetivo: str
-    :param palabra_ingresada: Description
-    :type palabra_ingresada: str
-    :return: Description
-    :rtype: str
-    """
+) -> list:
     # Verficamos que ambas cadenas tengan la misma longitud
     if len(palabra_objetivo) != len(palabra_ingresada):
-        print(f"La palabra ingresada <{palabra_ingresada}> no tiene la longitud adecuada")
-        return None # cambiar a raise Error o algo asi
+        raise Exception("Las lomgitudes de las palabras no coinciden")
     # creamos la lista para almacenar las cadenas
     palabra_verificada = []
     # recorremos la palabra ingresada
@@ -64,12 +41,6 @@ def verificar_palabra(
 def imprimir_grilla(
     grilla: list
 ) -> None:
-    """
-    Docstring for imprimir_grilla
-    
-    :param grilla: Description
-    :type grilla: list
-    """
     for fila in grilla:
         for columna in fila:
             print(columna, end=" ")
